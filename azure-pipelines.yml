@@ -36,7 +36,7 @@ stages:
 
     - task: CmdLine@2
       inputs:             
-        script: docker push tataexam:latest
+        script: docker push tataexam.azurecr.io/tataexam:latest
     - task: CmdLine@2
       inputs:             
         script: docker logout tataexam.azurecr.io
