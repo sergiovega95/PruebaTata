@@ -22,18 +22,21 @@ namespace WebClient.Pages
             _filter = filter;
         }
 
+
+        /// <summary>
+        /// Metodo que genera la vista
+        /// </summary>
         public void OnGet()
         {
-
+            // Method intentionally left empty.
         }
 
         /// <summary>
         /// Metodo de que permite encontrar las veces que aparece una palabra en un texto
         /// </summary>
         /// <param name="data"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public IActionResult OnPostSearchWord(WordSearchDTO data)
+        /// <returns></returns>       
+        public IActionResult OnPostSearchWord(WordSearchDto data)
         {
             try
             {

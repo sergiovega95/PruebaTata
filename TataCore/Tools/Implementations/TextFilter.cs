@@ -10,7 +10,7 @@ namespace TataCore.Tools.Implementations
 {
     public class TextFilter : ITextFilter
     {
-        public WordSearch CountWordAppearances(WordSearchDTO data)
+        public WordSearch CountWordAppearances(WordSearchDto data)
         {
 
             Regex regexExpression = new Regex(data.Pattern);

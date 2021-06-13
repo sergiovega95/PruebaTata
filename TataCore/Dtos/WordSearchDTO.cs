@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TataCore.Dtos
 {
-    public class WordSearchDTO
+    public class WordSearchDto
     {
         /// <summary>
         /// Palabra la cual se desea saber su cantidad de apariciones en un texto 

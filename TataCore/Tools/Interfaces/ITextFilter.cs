@@ -8,6 +8,6 @@ namespace TataCore.Tools.Interfaces
 {
     public interface ITextFilter
     {
-        WordSearch CountWordAppearances(WordSearchDTO data);
+        WordSearch CountWordAppearances(WordSearchDto data);
     }
 }
