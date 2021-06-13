@@ -7,8 +7,9 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["WebClient.csproj", "WebClient/"]
-RUN dotnet restore "WebClient.csproj"
+COPY ["WebClient/WebClient.csproj", "WebClient/"]
+COPY ["TataCore/TataCore.csproj", "TataCore/"]
+RUN dotnet restore "WebClient/WebClient.csproj"
 COPY . .
 WORKDIR "/src/WebClient"
 RUN dotnet build "WebClient.csproj" -c Release -o /app/build
