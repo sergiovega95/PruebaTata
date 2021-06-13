@@ -32,7 +32,7 @@ stages:
 
     - task: CmdLine@2       
       inputs:             
-        script: docker login tataexam.azurecr.io -u tataexam -p KuBbWQHCBbBgU7F0Y58lUoa9Pl=0WgdR
+        script: docker login tataexam.azurecr.io -u $(useracr) -p $(passacr)
 
     - task: CmdLine@2
       inputs:             
