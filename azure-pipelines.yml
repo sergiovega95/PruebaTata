@@ -1,0 +1,47 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  tag: 'latest'
+
+stages:
+- stage: Build
+  displayName: Build and deploy image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:   
+    
+    - task: Docker@2
+      displayName: Build image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        tags: |
+          $(tag)
+        repository: tataexam
+
+    - task: Bash@3       
+      inputs:             
+        script: docker login tataexam.azurecr.io -u tataexam -p KuBbWQHCBbBgU7F0Y58lUoa9Pl=0WgdR
+
+    - task: Bash@3
+      inputs:             
+        script: docker push tataexam.azurecr.io/tataexam:latest
+    - task: Bash@3
+      inputs:             
+        script: docker logout tataexam.azurecr.io
+
+    
+       
+    
+    
