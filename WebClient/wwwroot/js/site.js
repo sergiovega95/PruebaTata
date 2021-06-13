@@ -76,7 +76,11 @@ async function SearchWord()
     }
     catch (error)
     {
-
+        Swal.fire(
+            'Error',
+            `${error}`,
+            'error'
+        )
     }   
 }
 
