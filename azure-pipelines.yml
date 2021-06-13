@@ -28,7 +28,7 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
-        repository: tataexam
+        repository: tataexam.azurecr.io/tataexam
 
     - task: CmdLine@2       
       inputs:             
