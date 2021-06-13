@@ -30,14 +30,14 @@ stages:
           $(tag)
         repository: tataexam
 
-    - task: Bash@3       
+    - task: CmdLine@2       
       inputs:             
         script: docker login tataexam.azurecr.io -u tataexam -p KuBbWQHCBbBgU7F0Y58lUoa9Pl=0WgdR
 
-    - task: Bash@3
+    - task: CmdLine@2
       inputs:             
         script: docker push tataexam.azurecr.io/tataexam:latest
-    - task: Bash@3
+    - task: CmdLine@2
       inputs:             
         script: docker logout tataexam.azurecr.io
 
