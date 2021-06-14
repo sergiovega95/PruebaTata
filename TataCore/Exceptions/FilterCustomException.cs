@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace TataCore.Exceptions
 {
+
     [Serializable]
     public class FilterCustomException : Exception
     {
@@ -17,5 +19,6 @@ namespace TataCore.Exceptions
         {
 
         }
+        
     }
 }
