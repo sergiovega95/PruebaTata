@@ -29,13 +29,16 @@ stages:
         projectKey: 'TataExam'
         projectName: 'TataExam'
     
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
     - task: SonarQubeAnalyze@4    
       continueOnError: true
       displayName: Static Code analysis
       enabled: true      
         
     - task: Docker@2
-      displayName: Build image
+      displayName: Build docker image
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
