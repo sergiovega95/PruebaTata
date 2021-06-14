@@ -22,6 +22,7 @@ namespace TataCore.Tools.Implementations
             //Eliminando caracteres no necesarios
             data.Pattern = data.Pattern.Replace(".", "");
             data.Pattern = data.Pattern.Replace(",", "");
+            data.Pattern = data.Pattern.Trim();
            
             //Texto y patrón el minuscula para evitar problemas.
             data.Text = data.Text.ToLower();

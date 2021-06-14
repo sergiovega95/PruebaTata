@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TataCore.Dtos;
 using TataCore.Entities;
+using TataCore.Exceptions;
 using TataCore.Tools.Interfaces;
 
 namespace WebClient.Pages
@@ -42,6 +43,11 @@ namespace WebClient.Pages
             {
                 WordSearch response = _filter.CountWordAppearances(data);
                 return StatusCode(200,response);
+            }
+            catch (FilterCustomException customexception)
+            {
+                _logger.LogError("Ocurrió un error al buscar el la palabra dentro del texto", customexception);
+                return StatusCode(500, customexception.Message);
             }
             catch (Exception e)
             {

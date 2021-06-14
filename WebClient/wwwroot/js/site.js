@@ -10,6 +10,7 @@ $.ajaxSetup({
 
 document.getElementById("btnsend").addEventListener("click", SearchWord);
 
+document.getElementById("textword").addEventListener("keydown",FormatInput);
 
 function ValidForm()
 {
@@ -84,3 +85,14 @@ async function SearchWord()
     }   
 }
 
+function FormatInput(e)
+{
+    console.log(e);
+
+    var str = document.getElementById("textword").value;
+
+    if (str.indexOf(' ') !== -1)
+    {
+        document.getElementById("textword").value = document.getElementById("textword").value.trim();
+    }   
+}
