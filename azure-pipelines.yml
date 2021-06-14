@@ -19,8 +19,21 @@ stages:
     displayName: Build
     pool:
       vmImage: ubuntu-latest
-    steps:   
+    steps:
+       
     
+    - task: SonarQubePrepare@4
+      inputs:        
+        SonarQube: 'sonarconnetion'
+        scannerMode: 'MSBuild'
+        projectKey: 'TataExam'
+        projectName: 'TataExam'
+    
+    - task: SonarQubeAnalyze@4    
+      continueOnError: true
+      displayName: Static Code analysis
+      enabled: true      
+        
     - task: Docker@2
       displayName: Build image
       inputs:
@@ -29,6 +42,11 @@ stages:
         tags: |
           $(tag)
         repository: tataexam.azurecr.io/tataexam
+
+    - task: SonarQubePublish@4
+      displayName: Publish Analysis
+      inputs:
+        pollingTimeoutSec: '300'
 
     - task: CmdLine@2       
       inputs:             
@@ -41,7 +59,7 @@ stages:
       inputs:             
         script: docker logout tataexam.azurecr.io
 
-    
+   
        
     
     
