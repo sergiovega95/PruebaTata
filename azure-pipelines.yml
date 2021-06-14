@@ -1,7 +1,3 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
 - master
 
@@ -23,6 +19,7 @@ stages:
        
     
     - task: SonarQubePrepare@4
+      displayName: Config Sonar
       inputs:        
         SonarQube: 'sonarconnetion'
         scannerMode: 'MSBuild'
@@ -30,6 +27,7 @@ stages:
         projectName: 'TataExam'
     
     - task: DotNetCoreCLI@2
+      displayName: build app
       inputs:
         command: 'build'
     - task: SonarQubeAnalyze@4    
@@ -47,18 +45,21 @@ stages:
         repository: tataexam.azurecr.io/tataexam
 
     - task: SonarQubePublish@4
-      displayName: Publish Analysis
+      displayName: Publish Analysis sonar
       inputs:
         pollingTimeoutSec: '300'
 
-    - task: CmdLine@2       
+    - task: CmdLine@2  
+      displayName: Docker login     
       inputs:             
         script: docker login tataexam.azurecr.io -u $(useracr) -p $(passacr)
 
     - task: CmdLine@2
+      displayName: docker push
       inputs:             
         script: docker push tataexam.azurecr.io/tataexam:latest
     - task: CmdLine@2
+      displayName: Docker logout
       inputs:             
         script: docker logout tataexam.azurecr.io
 
