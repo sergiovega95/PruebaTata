@@ -12,6 +12,7 @@ using TataCore.Tools.Interfaces;
 
 namespace WebClient.Pages
 {
+    [ValidateAntiForgeryToken]
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
@@ -32,6 +33,7 @@ namespace WebClient.Pages
             // Method intentionally left empty.
         }
 
+        
         /// <summary>
         /// Metodo de que permite encontrar las veces que aparece una palabra en un texto
         /// </summary>
